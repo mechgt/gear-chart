@@ -1,0 +1,391 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="Current">
+  <PropertyGroup>
+    <StartAction>Program</StartAction>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{A4AAF7A8-4725-4B92-9A36-F3CD59249107}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>GearChart</RootNamespace>
+    <AssemblyName>GearChart</AssemblyName>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Common.Data, Version=3.0.3826.24994, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Zone Five Software\SportTracks 3\Common.Data.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Common.Visuals, Version=3.0.3826.25000, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Zone Five Software\SportTracks 3\Common.Visuals.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <PropertyGroup Condition=" (('$(Configuration)' == 'ST2.1Release') or ('$(Configuration)' == 'ST2.1Debug')) ">
+    <StartProgram>$(ProgramFiles)\Zone Five Software\SportTracks 2.1\SportTracks.exe</StartProgram>
+    <StPluginPath>%25ALLUSERSPROFILE%25\Application Data\ZoneFiveSoftware\SportTracks\2.0\Plugins</StPluginPath>
+    <StPluginVersion>2</StPluginVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" (('$(Configuration)' == 'ST3.0Release') or ('$(Configuration)' == 'ST3.0Debug')) ">
+    <StartProgram>$(ProgramFiles)\Zone Five Software\SportTracks 3\SportTracks.exe</StartProgram>
+    <StPluginPath>%25ALLUSERSPROFILE%25\Application Data\ZoneFiveSoftware\SportTracks\3\Plugins</StPluginPath>
+    <StPluginVersion>3</StPluginVersion>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OutputPath>bin\$(Configuration)\</OutputPath>
+  </PropertyGroup>
+  <!-- Configurations -->
+  <PropertyGroup Condition=" '$(Configuration)' == 'ST2.1Release' ">
+    <DefineConstants>$(DefineConstants);TRACE;ST_2_1</DefineConstants>
+    <Optimize>true</Optimize>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'ST2.1Debug' ">
+    <DefineConstants>$(DefineConstants);TRACE;DEBUG;ST_2_1</DefineConstants>
+    <DebugType>full</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'ST3.0Release' ">
+    <DefineConstants>TRACE;Release</DefineConstants>
+    <Optimize>true</Optimize>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'ST3.0Debug' ">
+    <DefineConstants>TRACE;DEBUG;Debug</DefineConstants>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <DebugType>full</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+  <!-- The last conditional references are seen in VSE, the others will raise warnings -->
+  <!-- references to ST API 2.1 -->
+  <!-- references to ST API 3.0 -->
+  <ItemGroup>
+    <Compile Include="Constants.cs" />
+    <Compile Include="Controls\DetailPaneChart.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\DetailPaneChart.designer.cs">
+      <DependentUpon>DetailPaneChart.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\SelectChartsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\SelectChartsForm.Designer.cs">
+      <DependentUpon>SelectChartsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Data\ActivityDocumentationComponent\ActivityDocumentationPluginProxy.cs" />
+    <Compile Include="Data\ActivityDocumentationComponent\ActivityDocumentationPlugin\Data\IActivityDocumentationComponent.cs" />
+    <Compile Include="Data\ActivityDocumentationComponent\ActivityDocumentationPlugin\Data\IActivityDocumentationComponentFactory.cs" />
+    <Compile Include="Data\ActivityDocumentationComponent\EditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Data\ActivityDocumentationComponent\EditForm.Designer.cs">
+      <DependentUpon>EditForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Data\ActivityDocumentationComponent\GearComponent.cs" />
+    <Compile Include="Data\ActivityDocumentationComponent\GearComponentFactory.cs" />
+    <Compile Include="Data\ActivityDocumentationComponent\SportTracksPlugins\Data\Group.cs" />
+    <Compile Include="Data\ActivityDocumentationComponent\SportTracksPlugins\Data\IGroup.cs" />
+    <Compile Include="Data\Data.cs" />
+    <Compile Include="Data\FilteredStatisticsPlugin\DataTrack\ActivityDataTrackControllerWrapper.cs" />
+    <Compile Include="Data\FilteredStatisticsPlugin\DataTrack\GearsDataTrackProvider.cs" />
+    <Compile Include="Data\FilteredStatisticsPlugin\DataTrack\RawGearsDataTrackProvider.cs" />
+    <Compile Include="Data\FilteredStatisticsPlugin\FilterCriteria\FilterCriteriaControllerWrapper.cs" />
+    <Compile Include="Data\FilteredStatisticsPlugin\FilterCriteria\GearFilterCriteria.cs" />
+    <Compile Include="Data\FilteredStatisticsPlugin\FilterCriteria\GearFilterCriteriaProvider.cs" />
+    <Compile Include="Data\FilteredStatisticsPlugin\FilterCriteria\GearNamedZone.cs" />
+    <Compile Include="Data\FilteredStatisticsPlugin\FilterCriteria\TemplateGearFilterCriteria.cs" />
+    <Compile Include="Data\FilteredStatisticsPlugin\FilterCriteria\TemplatePlaceholderGearFilterCriteria.cs" />
+    <Compile Include="Data\FilteredStatisticsPlugin\Statistics\GearStatisticsProvider.cs" />
+    <Compile Include="Data\FilteredStatisticsPlugin\Statistics\RangeInfoCacheWrapper.cs" />
+    <Compile Include="Data\FilteredStatisticsPlugin\Statistics\StatisticsControllerWrapper.cs" />
+    <Compile Include="Options.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Images.Designer.cs">
+      <DependentUpon>Images.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\Strings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Strings.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Utilities.cs" />
+    <Compile Include="Settings\ExtendSettingsPages.cs" />
+    <Compile Include="Settings\SettingsPage.cs" />
+    <Compile Include="Settings\SettingsPageControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Settings\SettingsPageControl.designer.cs">
+      <DependentUpon>SettingsPageControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Common.cs" />
+    <Compile Include="UI\ExtendActions.cs" />
+    <Compile Include="GUIDS.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="PluginMain.cs" />
+    <Compile Include="UI\DetailPage\GearStats.cs" />
+    <Compile Include="UI\DetailPage\GearChart.cs">
+    </Compile>
+    <Compile Include="UI\DetailPage\GearChartDetail.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\DetailPage\GearChartDetail.Designer.cs">
+      <DependentUpon>GearChartDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\GearFilterCriteria\SelectGearsEquipmentDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\GearFilterCriteria\SelectGearsEquipmentDialog.designer.cs">
+      <DependentUpon>SelectGearsEquipmentDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Utils\ActivityDataChangedHelper.cs" />
+    <Compile Include="Utils\Constants.cs" />
+    <Compile Include="Utils\ActivityGearTrackCache.cs" />
+    <Compile Include="Utils\SaveImage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Utils\SaveImage.designer.cs">
+      <DependentUpon>SaveImage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Utils\SprocketComboInfoCache.cs" />
+    <Compile Include="Utils\Units.cs" />
+    <Compile Include="Utils\Utils.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Controls\DetailPaneChart.resx">
+      <DependentUpon>DetailPaneChart.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\SelectChartsForm.resx">
+      <DependentUpon>SelectChartsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Data\ActivityDocumentationComponent\EditForm.resx">
+      <DependentUpon>EditForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Images.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Images.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Strings.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Strings.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Strings.ca.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>Strings.resx</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Strings.cs.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>Strings.resx</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Strings.da.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>Strings.resx</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Strings.de.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>Strings.resx</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Strings.en.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>Strings.resx</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Strings.es.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>Strings.resx</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Strings.fi.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>Strings.resx</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Strings.fr.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>Strings.resx</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Strings.he.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>Strings.resx</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Strings.it.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>Strings.resx</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Strings.ja.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>Strings.resx</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Strings.nl.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>Strings.resx</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Strings.no.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>Strings.resx</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Strings.pl.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>Strings.resx</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Strings.pt.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>Strings.resx</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Strings.ru.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>Strings.resx</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Strings.sk.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>Strings.resx</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Strings.sv.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>Strings.resx</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Strings.zh-CN.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>Strings.resx</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings\SettingsPageControl.resx">
+      <DependentUpon>SettingsPageControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\DetailPage\GearChartDetail.resx">
+      <DependentUpon>GearChartDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\GearFilterCriteria\SelectGearsEquipmentDialog.resx">
+      <DependentUpon>SelectGearsEquipmentDialog.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Utils\SaveImage.resx">
+      <DependentUpon>SaveImage.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\settings.png" />
+    <None Include="Resources\GoogleIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <PropertyGroup>
+    <PostBuildEvent>REM Set the plugin GUID
+set guid=095e9958-b07b-404e-a562-0735e8cd2cc4
+
+REM ST version, for plugin.xml file
+SET StVersion=3.0.3826
+IF "$(StPluginVersion)"=="2" SET StVersion=2.1.3478
+
+REM 7-zip must be configured, hardcoded path used
+set ZIPPATH=C:\Program Files\7-Zip
+
+set stPlgFile=$(SolutionDir)$(ProjectName).st$(StPluginVersion)plugin
+REM To move a .st2plugin to common area, create environment variable (or set it below)
+REM set stPlgoutdir=g:\Users\go\dev\web
+
+set StTarget=$(StPluginPath)\Update\%25guid%25
+IF NOT EXIST %25StTarget%25 mkdir %25StTarget%25
+
+ECHO Generate the plugin.xml file
+ECHO ^&lt;?xml version="1.0" encoding="utf-8" ?^&gt; &gt;  "$(TargetDir)\plugin.xml"
+ECHO ^&lt;plugin id="%25guid%25" minimumCommonVersion="%25StVersion%25" /^&gt; &gt;&gt; "$(TargetDir)\plugin.xml"
+
+REM XCOPY depreciated in Vista, use for XP compatibility
+REM XCOPY  "$(TargetDir)*.*" "%25StTarget%25" /I/Y/Q/E/S
+ECHO xcopy "$(TargetDir)*.dll" "%25StTarget%25" /S /Y
+xcopy "$(TargetDir)*.dll" "%25StTarget%25\" /S /Y
+
+set Release=No
+IF "$(ConfigurationName)"=="ST2.1Release" set Release=Yes
+IF "$(ConfigurationName)"=="ST3.0Release" set Release=Yes
+
+IF NOT "%25Release%25"=="Yes" GOTO END
+
+IF NOT EXIST "%25ZIPPATH%25\7z.exe" GOTO END
+
+IF EXIST "%25stPlgFile%25" del "%25stPlgFile%25" /Q
+"%25ZIPPATH%25\7z.exe" a -r -tzip "%25stPlgFile%25" "$(TargetDir)*" -x!*.st2plugin -x!*.tmp -x!*.pdb -x!$(ProjectName).xml
+
+IF "%25stPlgoutdir%25"=="" GOTO END
+IF NOT EXIST "%25stPlgoutdir%25" GOTO END
+COPY "%25stPlgFile%25" "%25stPlgoutdir%25"
+
+:END	</PostBuildEvent>
+  </PropertyGroup>
+</Project>
